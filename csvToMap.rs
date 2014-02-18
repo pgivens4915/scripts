@@ -8,15 +8,16 @@ fn main(){
   let lines :  ~[~str] = file.lines().collect();
 
   // Removing the longitudes
-  let longitudes : &~str = lines.head();
+  let longitudesCsv : &~str = lines.head();
   let data : &[~str] = lines.tail();
+
+  // Parsing the longitudes
+  let longitudes : ~[&str] = longitudesCsv.split(',').collect();
 
   // The main work
   for line in data.iter() {
     let chunks : ~[&str] = line.split(',').collect();
-    println(chunks[0]);
-    for chunk in chunks.iter() {
-      print(*chunk);
-    }
+    printMap()
+    //println!(chunks[0], longitudes[i], value);
   }
 }
