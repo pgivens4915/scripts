@@ -9,6 +9,7 @@ fn main(){
 
   for line in lines.iter() {
     let chunks : ~[&str] = line.split(',').collect();
+    println(chunks[0]);
     for chunk in chunks.iter() {
       print(*chunk);
     }
