@@ -35,7 +35,11 @@ fn printData(longitudes : &[&str], lat : &str, data : &[&str]){
      _    => {
        let lng : &str = *longitudes.head();
        let dataPt: &str = *data.head();
-       print!("{},{},{}\n", lat, lng,dataPt); 
+       let a : ~[&str] = lng.split('\n').collect();
+       let b : ~[&str] = dataPt.split('\n').collect();
+       let c : &str = *a.head();
+       let d : &str = *b.head();
+       print!("{},{},{}\n", lat, c, d); 
      }
   }
   printData(longitudes.tail(), lat, data.tail());
