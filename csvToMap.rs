@@ -17,7 +17,27 @@ fn main(){
   // The main work
   for line in data.iter() {
     let chunks : ~[&str] = line.split(',').collect();
-    printMap()
+    printMap(longitudes, chunks)
     //println!(chunks[0], longitudes[i], value);
   }
+}
+
+fn printMap(longitudesWithGarbage : &[&str], chunks : &[&str]) -> (){
+  let longitudes : &[&str]  = longitudesWithGarbage.tail();
+  let lat : &str = *(chunks.head());
+  let data : &[&str] = chunks.tail();
+  printData(longitudes, lat, data)
+}
+
+fn printData(longitudes : &[&str], lat : &str, data : &[&str]){
+  match longitudes.head_opt(){
+     None => return(),
+     _    => {
+       let lng : &str = *longitudes.head();
+       let dataPt: &str = *data.head();
+       print!("{},{},{}\n", lat, lng,dataPt); 
+     }
+  }
+  printData(longitudes.tail(), lat, data.tail());
+  return ();
 }
